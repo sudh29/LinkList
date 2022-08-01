@@ -1,7 +1,6 @@
 class Solution:
     def reverse(self,head, k):
-        # Code here
-        curr=head
+       '''curr=head
         temp=[]
         while curr:
             temp.append(curr.data)
@@ -17,5 +16,17 @@ class Solution:
         for i in range(len(temp)):
             curr.data=temp[i]
             curr=curr.next
-
-        return head
+        return head'''
+        
+        curr=head
+        prev=None
+        c=0
+        while curr and c<k:
+            next=curr.next
+            curr.next=prev
+            prev=curr
+            curr=next
+            c+=1
+        if next:
+            head.next=self.reverse(next,k)
+        return prev
